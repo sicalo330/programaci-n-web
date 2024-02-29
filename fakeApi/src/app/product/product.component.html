@@ -1,0 +1,20 @@
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let card of info">
+            <tr>
+                <td>{{card.id}}</td>
+                <td>{{card.category.name}}</td>
+                <td>{{card.title}}</td>
+                <td>${{card.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
