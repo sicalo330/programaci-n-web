@@ -1,20 +1,15 @@
-<div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Precio</th>
-            </tr>
-        </thead>
-        <tbody *ngFor="let card of info">
-            <tr>
-                <td>{{card.id}}</td>
-                <td>{{card.category.name}}</td>
-                <td>{{card.title}}</td>
-                <td>${{card.price}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <h1>Productos disponibles</h1>
+    <div class="row">
+        <a  routerLink="../agregarProducto"><h3>Agregar producto</h3></a>
+        <div class="col-md-3" *ngFor="let card of info; let i = index">
+            <article class="mb-5">
+                <img src="{{card.category.image}}" class="imagen">
+                <p>{{card.title}}</p>
+                <p>${{card.price}}</p>
+            </article>
+            <!-- Esto agrega un div abajo forzando un salto de línea -->
+            <div *ngIf="(i + 1) % 4 === 0" class="w-100"></div>
+        </div>
+    </div>
 </div>
