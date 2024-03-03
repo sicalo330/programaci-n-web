@@ -12,6 +12,7 @@ import { ProductComponent } from '../product/product.component';
 })
 export class FormPutComponent implements OnInit {
   datosProducto: FormGroup;
+  listProduct: Product[] = []
 
   constructor(
     private fb: FormBuilder,
@@ -26,6 +27,8 @@ export class FormPutComponent implements OnInit {
 
   ngOnInit() {
     console.log('Datos del producto:', this.data);
+    console.log(this.data.id)
+    this.listProduct = this.data
   }
 
 
@@ -42,18 +45,15 @@ export class FormPutComponent implements OnInit {
     images: imagesArray // Usar el array de URLs corregido
   };
 
-  console.log(datos);
+
 
   this.fakeApi.putProduct(datos, this.data.id).subscribe(response => {
     console.log(datos);
-    // Aquí puedes realizar alguna acción adicional si es necesario
+    console.log(response)
   });
     }
     catch(err){
       console.log("Error al actualizar: ", err)
     }
   }
-  
-  
-
 }

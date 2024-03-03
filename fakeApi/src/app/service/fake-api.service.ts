@@ -27,7 +27,13 @@ export class FakeApiService {
   }
 
   putProduct(product: Product, id:number){
-    return this.http.put(`${this.URL}/products/${id}`, product)
+    console.log(product)
+    console.log(id)
+      return this.http.put(`${this.URL}/products/${id}`, product)
+  }
+
+  deleteProduct(product: Product, id:number){
+    return this.http.delete(`${this.URL}/products/${id}`)
   }
   
 }

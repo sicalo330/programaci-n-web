@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FakeApiService } from '../service/fake-api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormPutComponent } from '../form-put/form-put.component';
+import { Product } from '../model/Product';
+
+//NOTA IMPORTANTE: preguntarle al profesor si es válido lo que estoy haciendo, ya que al hacer cualquier método debo actualizar la página o debo hacer algo para que se evidencia de una vez
 
 @Component({
   selector: 'app-product',
@@ -36,6 +39,8 @@ export class ProductComponent {
       const dialogRef = this.dialog.open(FormPutComponent, {
         data: {
           id: producto.id,
+          tittle: producto.title,
+          price:producto.price,
           categoryId: producto.categoryId,
           description: producto.description,
           images: producto.images
@@ -49,6 +54,17 @@ export class ProductComponent {
     }
     catch(err){
       console.log(err)
+    }
+  }
+
+  eliminarProducto(producto: Product, id:number){
+    try{
+      this.fakeApi.deleteProduct(producto, id).subscribe(data => {
+        console.log(data)
+      })
+    }
+    catch(err){
+      console.log('Error al eliminar el producto: ', err)
     }
   }
   
