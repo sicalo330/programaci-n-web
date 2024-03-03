@@ -30,14 +30,15 @@ export class FormPostComponent {
   postMethod(){
     console.log('asdasdas')
     const datos: Product = {
-      id: this.datosUsuario.get('categoryId')!.value,
+      categoryId: 1,
       title: this.datosUsuario.get('title')!.value,
       price: this.datosUsuario.get('price')!.value,
       description: this.datosUsuario.get('description')!.value,
+      images: ["https://i.imgur.com/wXuQ7bm.jpeg"]
     }
     console.log(datos)
     this.fakeApi.postProduct(datos).subscribe((data:any) => {
-      console.log('asdas')
+      console.log(data)
     });
   }
 }

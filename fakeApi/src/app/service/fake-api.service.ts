@@ -12,12 +12,22 @@ export class FakeApiService {
   URL = 'https://api.escuelajs.co/api/v1';
   event:any
 
+  //Al parecer debo poner 470 para poder ver los productos creados(Como son muchos)
   getProduct(){
-    return this.http.get(`${this.URL}/products`);
+    return this.http.get(`${this.URL}/products?offset=40&limit=20`);
+  }
+
+  getSingleProduct(){
+    return this.http.get(`${this.URL}/products/id`);
   }
 
   postProduct(product:Product){
-    console.log('Llego al servicio post')
-    return this.http.post(`${this.URL}/postProduct`, product);
+    console.log(product)
+    return this.http.post(`${this.URL}/products/`, product);
   }
+
+  putProduct(product: Product, id:number){
+    return this.http.put(`${this.URL}/products/${id}`, product)
+  }
+  
 }

@@ -4,9 +4,10 @@
         <a  routerLink="../agregarProducto"><h3>Agregar producto</h3></a>
         <div class="col-md-3" *ngFor="let card of info; let i = index">
             <article class="mb-5">
-                <img src="{{card.category.image}}" class="imagen">
+                <img src="{{card.images[0]}}" class="imagen">
                 <p>{{card.title}}</p>
                 <p>${{card.price}}</p>
+                <button (click)="openEdit(card)">Editar</button>
             </article>
             <!-- Esto agrega un div abajo forzando un salto de línea -->
             <div *ngIf="(i + 1) % 4 === 0" class="w-100"></div>

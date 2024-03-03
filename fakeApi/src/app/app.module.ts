@@ -10,20 +10,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormPostComponent } from './form-post/form-post.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormPutComponent } from './form-put/form-put.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ProductComponent,
-    FormPostComponent
+    FormPostComponent,
+    FormPutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [FakeApiService],
   bootstrap: [AppComponent]
