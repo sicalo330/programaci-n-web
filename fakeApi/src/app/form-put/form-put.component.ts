@@ -1,9 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Product } from '../model/Product';
+import { ProductPut } from '../model/ProductPut';
 import { FakeApiService } from '../service/fake-api.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { ProductComponent } from '../product/product.component';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-form-put',
@@ -12,12 +11,13 @@ import { ProductComponent } from '../product/product.component';
 })
 export class FormPutComponent implements OnInit {
   datosProducto: FormGroup;
-  listProduct: Product[] = []
+  listProduct: ProductPut[] = [];
 
   constructor(
     private fb: FormBuilder,
     private fakeApi: FakeApiService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<FormPutComponent>  // Referencia al MatDialogRef
   ) {
     this.datosProducto = this.fb.group({
       editTitle: [data.title, Validators.required],
@@ -31,28 +31,21 @@ export class FormPutComponent implements OnInit {
     this.listProduct = this.data
   }
 
-
   actualizarProducto(): void {
-    try{
-  // Separar la cadena de imágenes en un array de URLs
-  const imagesArray = this.data.images[0].split(',');
+    try {
+      const imagesArray = this.data.images[0].split(',');
 
-  const datos: Product = {
-    title: this.datosProducto.get('editTitle')!.value,
-    price: this.datosProducto.get('editPrice')!.value,
-    categoryId: this.data.categoryId,
-    description: this.data.description,
-    images: imagesArray // Usar el array de URLs corregido
-  };
+      const datos: ProductPut = {
+        title: this.datosProducto.get('editTitle')!.value,
+        price: this.datosProducto.get('editPrice')!.value,
+      };
 
-
-
-  this.fakeApi.putProduct(datos, this.data.id).subscribe(response => {
-    console.log(datos);
-    console.log(response)
-  });
-    }
-    catch(err){
+      this.fakeApi.putProduct(datos, this.data.id).subscribe(response => {
+        console.log(datos);
+        console.log(response)
+        this.dialogRef.close(); // Cierra el diálogo después de actualizar el producto
+      });
+    } catch (err) {
       console.log("Error al actualizar: ", err)
     }
   }

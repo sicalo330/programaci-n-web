@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../model/Product';
+import { ProductPut } from '../model/ProductPut';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class FakeApiService {
 
   //Al parecer debo poner 470 para poder ver los productos creados(Como son muchos)
   getProduct(){
-    return this.http.get(`${this.URL}/products?offset=40&limit=20`);
+    return this.http.get(`${this.URL}/products?offset=20&limit=20`);
   }
 
   getSingleProduct(){
@@ -26,10 +27,9 @@ export class FakeApiService {
     return this.http.post(`${this.URL}/products/`, product);
   }
 
-  putProduct(product: Product, id:number){
-    console.log(product)
-    console.log(id)
-      return this.http.put(`${this.URL}/products/${id}`, product)
+  putProduct(productPut: ProductPut, id:number){
+
+      return this.http.put(`${this.URL}/products/${id}`, productPut)
   }
 
   deleteProduct(product: Product, id:number){

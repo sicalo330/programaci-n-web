@@ -33,7 +33,6 @@ export class ProductComponent {
       this.info = data
     })
   }
-
   openEdit(producto: any): void {
     try{
       const dialogRef = this.dialog.open(FormPutComponent, {
@@ -47,10 +46,7 @@ export class ProductComponent {
         }
       });
     
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        // Aquí puedes realizar acciones después de que se cierre el diálogo, por ejemplo, refrescar la lista de productos
-      });
+
     }
     catch(err){
       console.log(err)
