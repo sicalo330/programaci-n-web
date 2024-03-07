@@ -3,6 +3,7 @@ import { FakeApiService } from '../service/fake-api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormPutComponent } from '../form-put/form-put.component';
 import { Product } from '../model/Product';
+import { faPlus, faEdit, faRemove } from '@fortawesome/free-solid-svg-icons';
 
 //NOTA IMPORTANTE: preguntarle al profesor si es válido lo que estoy haciendo, ya que al hacer cualquier método debo actualizar la página o debo hacer algo para que se evidencia de una vez
 
@@ -13,7 +14,9 @@ import { Product } from '../model/Product';
 })
 
 export class ProductComponent {
-
+  iconPlus = faPlus
+  iconEdit = faEdit
+  iconRemove = faRemove
   idProducto:number = 0;
   categoryIdProducto:number = 0;
   descriptionProducto:string = '';

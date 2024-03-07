@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormPutComponent } from './form-put/form-put.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    FontAwesomeModule
   ],
   providers: [FakeApiService],
   bootstrap: [AppComponent]

@@ -1,17 +1,23 @@
 <div class="container">
-    <h1>Productos disponibles</h1>
+    <h1 class="d-flex justify-content-center">Productos disponibles</h1>
     <div class="row">
-        <a  routerLink="../agregarProducto"><h3>Agregar producto</h3></a>
+        <div>
+            <a routerLink="../agregarProducto">
+                <fa-icon [icon]="iconPlus" class="circle-icon text-dark"></fa-icon>
+            </a>    
+        </div>
         <div class="col-md-3" *ngFor="let card of info; let i = index">
+            <br>
             <article class="mb-5">
                 <img src="{{card.images[0]}}" class="imagen">
                 <p>{{card.title}}</p>
                 <p>${{card.price}}</p>
-                <button (click)="openEdit(card)">Editar</button>
-                <button (click)="eliminarProducto(card, card.id)">Borrar</button>
+                <button (click)="openEdit(card)" class="bg-warning rounded-3 ml-3 p-2 px-4 border border-light"> <fa-icon [icon]="iconEdit"></fa-icon></button>
+                <button (click)="eliminarProducto(card, card.id)" class="bg-danger text-light rounded-3 ml-2 p-2 px-4 border border-light" > <fa-icon [icon]="iconRemove"></fa-icon> </button>
             </article>
             <!-- Esto agrega un div abajo forzando un salto de línea -->
             <div *ngIf="(i + 1) % 4 === 0" class="w-100"></div>
         </div>
     </div>
 </div>
+

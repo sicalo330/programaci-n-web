@@ -1,19 +1,25 @@
-<form [formGroup]="datosUsuario" (ngSubmit)="postMethod()">
-    <div class="form-group">
-      <label for="exampleInputTitle">Title</label>
-      <input type="text" class="form-control" id="exampleInputTitle" formControlName="title" placeholder="Enter title">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPrice">Price</label>
-      <input type="number" class="form-control" id="exampleInputPrice" formControlName="price" placeholder="price">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputDescription">Description</label>
-        <input type="text" class="form-control" id="exampleInputDescription" formControlName="description" placeholder="Description">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputCategoryId">Category ID</label>
-        <input type="number" class="form-control" id="exampleInputCategoryId" formControlName="categoryId" placeholder="Category ID">
-      </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+<form [formGroup]="datosUsuario" (ngSubmit)="postMethod()" class="w-50 mx-auto mt-5">
+  <div class="mb-3 d-flex align-items-center">
+    <a routerLink="../home" class="text-dark">
+      <fa-icon [icon]="iconLeft" class="fa-2x me-2"></fa-icon>
+    </a>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputTitle">Title</label>
+    <input type="text" class="form-control" id="exampleInputTitle" formControlName="title" placeholder="Enter title">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPrice">Price</label>
+    <input type="number" class="form-control" id="exampleInputPrice" formControlName="price" placeholder="Price">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputDescription">Description</label>
+    <input type="text" class="form-control" id="exampleInputDescription" formControlName="description" placeholder="Description">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputCategoryId">Category ID</label>
+    <input type="number" class="form-control" id="exampleInputCategoryId" formControlName="categoryId" placeholder="Category ID">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

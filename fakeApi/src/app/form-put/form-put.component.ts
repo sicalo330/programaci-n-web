@@ -24,7 +24,7 @@ export class FormPutComponent implements OnInit {
       editPrice: [data.price, Validators.required]
     });
   }
-
+  
   ngOnInit() {
     console.log('Datos del producto:', this.data);
     console.log(this.data.id)
@@ -41,9 +41,7 @@ export class FormPutComponent implements OnInit {
       };
 
       this.fakeApi.putProduct(datos, this.data.id).subscribe(response => {
-        console.log(datos);
-        console.log(response)
-        this.dialogRef.close(); // Cierra el diálogo después de actualizar el producto
+        this.dialogRef.close();
       });
     } catch (err) {
       console.log("Error al actualizar: ", err)

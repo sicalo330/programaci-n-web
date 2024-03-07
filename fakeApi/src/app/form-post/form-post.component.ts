@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FakeApiService } from '../service/fake-api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../model/Product';
+import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-post',
@@ -9,8 +11,9 @@ import { Product } from '../model/Product';
   styleUrls: ['./form-post.component.css']
 })
 export class FormPostComponent {
+  iconLeft = faCircleArrowLeft
   datosUsuario: FormGroup
-  constructor(private fakeApi: FakeApiService, private fb: FormBuilder ){
+  constructor(private fakeApi: FakeApiService, private fb: FormBuilder, private router:Router ){
     this.datosUsuario = this.fb.group({
       id: ['', Validators.required],
       title: ['', Validators.required],
@@ -38,7 +41,9 @@ export class FormPostComponent {
     }
     console.log(datos)
     this.fakeApi.postProduct(datos).subscribe((data:any) => {
-      console.log(data)
+      console.log(data.id)
+      this.router.navigate(['/home']);
     });
+
   }
 }

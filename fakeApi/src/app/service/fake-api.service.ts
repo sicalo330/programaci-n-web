@@ -15,7 +15,7 @@ export class FakeApiService {
 
   //Al parecer debo poner 470 para poder ver los productos creados(Como son muchos)
   getProduct(){
-    return this.http.get(`${this.URL}/products?offset=20&limit=20`);
+    return this.http.get(`${this.URL}/products?offset=0&limit=20`);
   }
 
   getSingleProduct(){
