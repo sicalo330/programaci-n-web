@@ -1,11 +1,11 @@
 <form [formGroup]="datosProducto" class="w-20 mx-auto mt-5 border rounded p-4 pt-10">
   <div class="mb-3">
     <label for="exampleInputTitle" class="form-label">Title</label>
-    <input type="text" class="form-control form-control-lg" id="exampleInputTitle" formControlName="editTitle" placeholder="Enter title">
+    <input type="text" class="form-control form-control-lg" id="exampleInputTitle" formControlName="editTitle" placeholder="Enter title" required="">
   </div>
   <div class="mb-3">
     <label for="exampleInputPrice" class="form-label">Price</label>
     <input type="number" class="form-control form-control-lg" id="exampleInputPrice" formControlName="editPrice" placeholder="Price">
   </div>
-  <button type="submit" class="btn btn-primary d-block mx-auto">Editar</button>
+  <button type="submit" class="btn btn-primary d-block mx-auto" (click)="actualizarProducto()" [disabled]="datosProducto.invalid">Editar</button>
 </form>
