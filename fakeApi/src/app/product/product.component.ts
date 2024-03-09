@@ -14,6 +14,7 @@ import { faPlus, faEdit, faRemove } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class ProductComponent {
+  inputValue: String = ''
   iconPlus = faPlus
   iconEdit = faEdit
   iconRemove = faRemove
@@ -25,6 +26,7 @@ export class ProductComponent {
   constructor(private fakeApi: FakeApiService, public dialog: MatDialog){}
 
   info: any
+public data:any[] = []
 
   idProductoEditar: number = 0;
 
@@ -34,6 +36,20 @@ export class ProductComponent {
     this.fakeApi.getProduct().subscribe((data: any) => {
       console.log(data)
       this.info = data
+      this.data = Array.from(data);
+      console.log(data)
+      this.data.map((item: any) => {
+        let imagesNoGarbage = item.images.map((image: string) => {
+          return image.replace(/^[\[\"]+|[\]\"]+$/g, ''); // Eliminar corchetes y comillas extras al principio y al final
+        });
+      
+        try {
+          item.images = imagesNoGarbage;
+          item.imagesActual = item.images[0];
+        } catch (error) {
+          console.log(error);
+        }
+      })      
     })
   }
   openEdit(producto: any): void {
@@ -66,6 +82,5 @@ export class ProductComponent {
       console.log('Error al eliminar el producto: ', err)
     }
   }
-  
 
 }
