@@ -2,6 +2,9 @@
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
 }
+p{
+    width: 50%;
+}
 li{
     list-style: none;
 }
@@ -11,6 +14,14 @@ body{
 
 .presentacion{
     text-align: center;
+    margin-left: 50%;
+    position: relative;
+}
+
+.presentacion2{
+    text-align: center;
+    margin-left: 40%;
+    position: relative;
 }
 
 .iconEducacion{
@@ -30,8 +41,7 @@ body{
     height: 10%;
     width: 10%;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 55%;
     border-radius: 100px;
 
 }
@@ -44,6 +54,7 @@ body{
 }
 .square {
     position:relative;
+    margin-left: 150px;
 }
 
 .footer{
@@ -58,6 +69,9 @@ body{
     text-align: center  ; /* Alineación del texto a la izquierda */
     justify-content: center; /* Alinea el contenido al centro horizontalmente */
     align-items: center; /* Alinea el contenido al centro verticalmente */
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .fichaTecnica p{
@@ -87,7 +101,70 @@ body{
     height:5%;
 }
 
-.habilidades{
+.tamañoFoto{
     width: 5%;
     height: 5%;
+}
+
+.columna-marron {
+    background-color: brown;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 350px; /* Reducir el ancho */
+    height: 100%; /* Ajustar la altura */
+    z-index: 1;
+}
+
+/* Modifica el contenedor principal para incluir la columna marrón */
+.wrapper {
+    width: 960px;
+    margin: auto;
+    padding: auto;
+    margin-right: 18%;
+    position: relative; /* Agregamos posición relativa para que el contenido pueda estar por encima */
+}
+
+/* Ajusta el margen del contenido para que esté al lado de la columna marrón */
+.main-content {
+    margin-left: 150px; /* Ancho de la columna marrón */
+}
+
+/* Agrega un padding a los elementos dentro de .main-content para dejar espacio entre el borde de la columna marrón */
+.main-content > * {
+    padding-left: 20px; /* Puedes ajustar este valor según necesites */
+}
+
+/* Agrega un padding al encabezado para evitar que el texto se superponga con la columna marrón */
+.header {
+    padding-left: 170px; /* Ancho de la columna marrón + un poco más */
+    position: relative; /* Agregamos posición relativa */
+    z-index: 2; /* Asegura que esté por encima de la columna */
+}
+
+/* Agrega un margen superior al footer para evitar la superposición */
+.footer {
+    margin-top: 20px; /* Ajusta este valor según sea necesario */
+    position: relative; /* Agregamos posición relativa */
+    z-index: 2; /* Asegura que esté por encima de la columna */
+}
+
+.lista-folleto {
+    margin-top: 20%; /* Ajustar el margen superior */
+    color: white;
+    font-size: 14px; /* Reducir el tamaño de fuente */
+}
+.lista-folleto li {
+    margin-top: 10px;
+}
+
+.habilidades{
+    width: 15%;
+    height: 15%;
+}
+
+.listaHabilidades{
+    padding: 0;
+    font-size: 80%;
 }
