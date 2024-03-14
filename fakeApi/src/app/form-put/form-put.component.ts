@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./form-put.component.css']
 })
 export class FormPutComponent implements OnInit {
-  datosProducto: FormGroup;
+  datosProducto!: FormGroup;
   listProduct: ProductPut[] = [];
 
   constructor(
@@ -18,17 +18,32 @@ export class FormPutComponent implements OnInit {
     private fakeApi: FakeApiService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<FormPutComponent>  // Referencia al MatDialogRef
-  ) {
-    this.datosProducto = this.fb.group({
-      editTitle: [data.title, Validators.required],
-      editPrice: [data.price, Validators.required]
-    });
+  ) {}
+
+
+
+  ngOnInit() {
+    // Corregir el nombre del campo 'tittle' a 'title'
+    //Lo que suce es que la api al parecer tiene un error tipografico ya que puso tittle, lo que hago aquí es tomar ese tittle y poner como title para que se
+    //Adapte a la ortografía de mi código por así decirlo y por último se agrega a listProduct que al finar será ciclado para proporcionar en la vista
+    //Los productos
+    this.data.title = this.data.tittle;
+    delete this.data.tittle; // Eliminar el campo incorrecto
+  
+    this.listProduct = this.data;
+  
+    // Crear el FormGroup después de que `data` esté completamente disponible
+    this.createForm(this.data.title, this.data.price);
+    console.log(this.data);
   }
   
-  ngOnInit() {
-    console.log('Datos del producto:', this.data);
-    console.log(this.data.id)
-    this.listProduct = this.data
+
+  createForm(data:string, id:number) {
+    this.datosProducto = this.fb.group({
+      editTitle: data,
+      editPrice: id
+    });
+
   }
 
   actualizarProducto(): void {
@@ -40,11 +55,15 @@ export class FormPutComponent implements OnInit {
         price: this.datosProducto.get('editPrice')!.value,
       };
 
+      console.log(datos)
+
       this.fakeApi.putProduct(datos, this.data.id).subscribe(response => {
         this.dialogRef.close();
+        location.reload()
       });
     } catch (err) {
       console.log("Error al actualizar: ", err)
     }
   }
 }
+

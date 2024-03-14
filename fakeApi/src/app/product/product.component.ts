@@ -64,8 +64,6 @@ public data:any[] = []
           images: producto.images
         }
       });
-    
-
     }
     catch(err){
       console.log(err)
@@ -76,6 +74,7 @@ public data:any[] = []
     try{
       this.fakeApi.deleteProduct(producto, id).subscribe(data => {
         console.log(data)
+        location.reload()
       })
     }
     catch(err){
