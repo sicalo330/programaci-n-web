@@ -12,5 +12,7 @@ npm install @angular/material/dialog
 npm install @fortawesome/angular-fontawesome
 
 por último solo se necesita poner en la terminal el siguiente comando:
+usar npm install para descargar las dependencias y por último usar el siguiente comando
 ng s
+Tener en cuenta estar en el directorio(Carpeta) del proyecto
 Muchas gracias
