@@ -13,3 +13,4 @@ npm install @fortawesome/angular-fontawesome
 
 por último solo se necesita poner en la terminal el siguiente comando:
 ng s
+Muchas gracias
