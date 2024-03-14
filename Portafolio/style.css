@@ -14,7 +14,7 @@ body{
 
 .presentacion{
     text-align: center;
-    margin-left: 50%;
+    margin-left: 35%;
     position: relative;
 }
 
@@ -41,7 +41,7 @@ body{
     height: 10%;
     width: 10%;
     display: block;
-    margin-left: 55%;
+    margin-left: 46%;
     border-radius: 100px;
 
 }
@@ -164,7 +164,16 @@ body{
     height: 15%;
 }
 
+.listaHabilidades li{
+    font-size: 17px;
+}
+
 .listaHabilidades{
     padding: 0;
     font-size: 80%;
+}
+
+.intro{
+    text-align: center;
+    margin-left: -200px;
 }
