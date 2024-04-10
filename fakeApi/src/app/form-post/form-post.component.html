@@ -20,9 +20,9 @@
     <span class="danger" *ngIf="datosUsuario.get('description')!.invalid && datosUsuario.get('description')!.touched">La Identificación es <strong>Obligatoria</strong></span>
   </div>
   <div class="form-group">
-    <label for="exampleInputCategoryId">Category ID</label>
-    <input type="number" class="form-control" id="exampleInputCategoryId" formControlName="categoryId" placeholder="Category ID">
-    <span class="danger" *ngIf="datosUsuario.get('categoryId')!.invalid && datosUsuario.get('categoryId')!.touched">La Identificación es <strong>Obligatoria</strong></span>
+    <label for="exampleInputImages">Images</label>
+    <input type="text" class="form-control" id="exampleInputImages" formControlName="images" placeholder="Url de la imagen">
+    <span class="danger" *ngIf="datosUsuario.get('images')!.invalid && datosUsuario.get('images')!.touched">La Identificación es <strong>Obligatoria</strong></span>
   </div>
   <br>
   <button type="submit" class="btn btn-primary" [disabled]="datosUsuario.invalid">Submit</button>

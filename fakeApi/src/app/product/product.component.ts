@@ -14,6 +14,7 @@ import { faPlus, faEdit, faRemove } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class ProductComponent {
+  listProducts:any[] = []
   inputValue: String = ''
   iconPlus = faPlus
   iconEdit = faEdit
@@ -33,47 +34,30 @@ public data:any[] = []
   datosProductos:any;
 
   ngOnInit(){
-    this.fakeApi.getProduct().subscribe((data: any) => {
-      console.log(data)
-      this.info = data
-      this.data = Array.from(data);
-      console.log(data)
-      this.data.map((item: any) => {
-        let imagesNoGarbage = item.images.map((image: string) => {
-          return image.replace(/^[\[\"]+|[\]\"]+$/g, ''); // Eliminar corchetes y comillas extras al principio y al final
-        });
-      
-        try {
-          item.images = imagesNoGarbage;
-          item.imagesActual = item.images[0];
-        } catch (error) {
-          console.log(error);
-        }
-      })      
+    this.fakeApi.getProducts().subscribe(data => {
+      this.listProducts = data
     })
   }
   openEdit(producto: any): void {
     try{
-      const dialogRef = this.dialog.open(FormPutComponent, {
-        data: {
-          id: producto.id,
-          tittle: producto.title,
-          price:producto.price,
-          categoryId: producto.categoryId,
-          description: producto.description,
-          images: producto.images
-        }
-      });
+        const dialogRef = this.dialog.open(FormPutComponent, {
+          data: {
+            id: producto.id,
+            tittle: producto.title,
+            price:producto.price,
+            description: producto.description,
+            images: producto.images
+          }
+        });
     }
     catch(err){
       console.log(err)
     }
   }
 
-  eliminarProducto(producto: Product, id:number){
+  eliminarProducto(id:number){
     try{
-      this.fakeApi.deleteProduct(producto, id).subscribe(data => {
-        console.log(data)
+      this.fakeApi.deleteProduct(id).subscribe(data => {
         location.reload()
       })
     }
@@ -81,5 +65,4 @@ public data:any[] = []
       console.log('Error al eliminar el producto: ', err)
     }
   }
-
 }

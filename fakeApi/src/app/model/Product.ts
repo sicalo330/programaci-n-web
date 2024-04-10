@@ -1,12 +1,10 @@
 export class Product {
-    categoryId: number;
     title: string;
     price: number;
     description: string;
     images:string[];
 
-    constructor(categoryId:number, title: string, price: number, description: string, images:string[]) {
-        this.categoryId = categoryId
+    constructor(title: string, price: number, description: string, images:string[]) {
         this.title = title;
         this.price = price;
         this.description = description;

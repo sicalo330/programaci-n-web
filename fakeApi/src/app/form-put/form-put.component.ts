@@ -12,6 +12,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class FormPutComponent implements OnInit {
   datosProducto!: FormGroup;
   listProduct: ProductPut[] = [];
+  datosPut:any
 
   constructor(
     private fb: FormBuilder,
@@ -34,7 +35,6 @@ export class FormPutComponent implements OnInit {
   
     // Crear el FormGroup después de que `data` esté completamente disponible
     this.createForm(this.data.title, this.data.price);
-    console.log(this.data);
   }
   
 
@@ -43,21 +43,24 @@ export class FormPutComponent implements OnInit {
       editTitle: data,
       editPrice: id
     });
-
   }
 
   actualizarProducto(): void {
     try {
-      const imagesArray = this.data.images[0].split(',');
 
       const datos: ProductPut = {
         title: this.datosProducto.get('editTitle')!.value,
         price: this.datosProducto.get('editPrice')!.value,
-      };
+      }
 
-      console.log(datos)
+      this.datosPut = 
+        {
+          id:this.data.id,
+          title:datos.title,
+          price:datos.price,
+        }
 
-      this.fakeApi.putProduct(datos, this.data.id).subscribe(response => {
+      this.fakeApi.putProduct(this.datosPut).subscribe(response => {
         this.dialogRef.close();
         location.reload()
       });
